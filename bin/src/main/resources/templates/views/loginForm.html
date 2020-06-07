@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <meta charset="UTF-8">
+ 
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Content-Language" content="en_US" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+<link rel='stylesheet' href='https://res.cloudinary.com/ratzydev/raw/upload/v1527318671/webdevchallenge1/reset.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+ <title>Index Page</title>
+</head>
+
+
+ <body>
+   <header>
+    <a href="#/" class="logo"><img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/logo.png" alt="Smart SEO" class="full-width-img"/></a>
+    <nav>
+        
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Usuarios</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+      <!--  >li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/cadastrarEmpresa">Cadastrar</a>
+      </li-->
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+    </nav>
+    
+    <div class="hamburger-menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>   
+
+      <div class="hero-wrapper">
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero.jpg" alt="Hero Image" class="resp-hide" />
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero-resp.jpg" alt="Hero Image" class="resp-show" />
+        <div class="hero-text-wrapper">
+            <h1>The best SEO Agency Ever</h1>
+            <p>Your business is always safe in our hands.</p>
+        </div>
+    </div>
+    <div class="hero-strip-wrapper">
+        <h3>Driving Revenue through SEO and PPC for Brands & SEMs.</h3>
+        <button type="button" class="btn">Get Your Results</button>
+    </div>
+   
+     
+    <ul class="services-list">
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+                <h3>SEO</h3>
+            </div>
+            <p>
+                Duis elementum porta dolor, nec ultricies nulla maximus in. In feugiat urna vitae neque ornare pretium. Mauris non dapibus metus. Nulla eu sodales tortor. Duis sem mauris, lobortis in consequat et, posuere id magna.
+            </p></li>
+            </ul>
+        </body>
+	
+	
+	<div class="login-form">
+	 <div class="alert alert-danger" th:if="${param.error}">
+	
+     <h4>Email ou Password Inv&#225;lidos!</h4>	</div>
+		<form th:action="@{/login}"  method="post" class="aument-transicao">
+		
+				<h1>Login</h1>
+			<div class="form-group">
+				<label for="email" class="form-control-label">Email</label> <input
+					type="text" class="form-control"  id="email" name="username" />
+			
+			</div>
+			<div class="form-group">
+				<label for="password" class="form-control-label">Password</label> <input
+					type="password" class="form-control" 
+					id="password"  name="password"/>
+				
+
+			</div>
+			
+			<input type="submit" value="Login" class="vldform__button" />
+
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <meta charset="UTF-8">
+  <title>Lista</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Content-Language" content="en_US" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+<link rel='stylesheet' href='https://res.cloudinary.com/ratzydev/raw/upload/v1527318671/webdevchallenge1/reset.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head>
+ <title>Index Page</title>
+ 
+    
+</head>
+
+
+
+<body>
+
+ <body>
+   <header>
+    <a href="/" class="logo"><img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/logo.png" alt="Smart SEO" class="full-width-img"/></a>
+    <nav>
+        
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Clientes</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+      <!--  >li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/cadastrarEmpresa">Cadastrar</a>
+      </li-->
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+       <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" href="/logout" >Logout</a>
+      </li>
+    </nav>
+    <div class="hamburger-menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>  
+ <div class="hero-wrapper">
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero.jpg" alt="Hero Image" class="resp-hide" />
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero-resp.jpg" alt="Hero Image" class="resp-show" />
+        <div class="hero-text-wrapper">
+            <h1>Conheça a FEMKHRA </h1>
+            <p>Especializado em Laudos e Medições Técnicas.</p>
+        </div>
+    </div>
+        
+
+ <!--  >ul id="nav-mobile" class="right hide-on-med-and-down">
+<li><a href="/cadastrarEmpresa" class="waves-effect waves-light btn right"><i class="material-icons left">add_circle_outline</i>Novo Cadastro</a></li>
+</ul-->
+
+
+
+	 <!--  >div class="container py-4">
+	 
+	 <div class="col-lg-22  bg-white rounded shadow"-->
+		
+		  <!-- ->div class="card">
+		   <div class="caption">Dados do Cliente</div>
+			
+						<table class="table"-->
+<!--  >div class="container-table">
+<div class="col-md-16 col-md-offset-1">
+    <div class="panel panel-default"-->
+  
+     
+ 
+ 
+ 
+<div class="container">
+<div class="panel-heading"><h3 class="panel-title"><strong>Lista de Parceiros </strong></h3> </div>
+  
+ <table class=" table table-striped">
+<thead>
+<tr>
+<th scope="col">Adicionar Equipamento</th>
+<th scope="col">Nome</th>
+<th scope="col">Raz&#227;o Social</th>
+<th scope="col">E-mail</th>
+<th scope="col">Telefone</th>
+<th scope="col">&#193;rea M&#233;dica</th>
+<th scope="col">CNPJ</th>
+<th scope="col">N&#186;</th>
+<th scope="col">Rua</th>
+<th scope="col">Bairro</th>
+<th scope="col">Cidade</th>
+<th scope="col">CEP</th>
+<th scope="col">Editar</th>
+<th scope="col">Deletar</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+      <tr th:each="cadastro : ${cadastros}">
+      	<td><a th:href ="${(#mvc.url('EC#detalhesEmpresa').arg(0,cadastro.codigo)).build()}"><i class="material-icons">add</i></a></td>
+      	<td><span th:text="${cadastro.nome_empresa}"></span></td>
+      	<td><span th:text="${cadastro.razao_empresa}"></span></td>
+		<td><span th:text="${cadastro.email_empresa}"></span></td>
+		<td><span th:text="${cadastro.telefone}"></span></td>
+		<td><span th:text="${cadastro.area_medica}"></span>	</td>
+		<td><span th:text="${cadastro.cnpj}"></span></td>
+		<td><span th:text="${cadastro.numero_end}"></span></td>
+		<td><span th:text="${cadastro.rua_end}"></span>	</td>
+		<td><span th:text="${cadastro.bairro_end}"></span></td>
+		<td><span th:text="${cadastro.cidade_end}"></span></td>
+		<td><span th:text="${cadastro.cep}"></span></td>
+		<!--  >td><a class="waves-effect waves-teal btn-flat " th:href ="${(#mvc.url('CC#attCompany').arg(0,cadastro.codigo)).build()}"><i class="material-icons">edit</i></a></td-->
+		<!--td>
+		<spring:url value ="/update/${cadastro.codigo}" var="updateURL">
+		<a class="waves-effect waves-teal btn-flat" href="${updateURL}" ><i class="material-icons">edit</i></a>
+		</td-->
+		
+		
+		
+		<td><a class="waves-effect waves-teal btn-flat " th:href ="${(#mvc.url('EC#deletarEmpresa').arg(0,cadastro.codigo)).build()}"><i class="material-icons">delete_forever</i></a></td>
+		</tr>
+		
+	</tbody>
+	</table>
+	
+</div>
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+     
+</body>
+<footer>
+<p class="text text-center">
+     &copy; 2019 Projeto FEMKHRA
+   </p>
+
+</footer>
+
+</html>

@@ -1,0 +1,50 @@
+<header th:fragment="header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Femkhra</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a></li>
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Usuarios</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+      <!--  >li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/cadastrarEmpresa">Cadastrar</a>
+      </li-->
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+     
+    </ul>
+     <a><h6 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h6></a>
+      <b>&nbsp</b>              
+    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post"  sec:authorize="isAuthenticated()">
+
+       <input class="form-control mr-sm-2" type="hidden" /> 
+        
+      <button class="btn btn-secondary " type="submit">Logout</button>
+      
+    </form>
+  </div>
+</nav>
+
+
+</header>

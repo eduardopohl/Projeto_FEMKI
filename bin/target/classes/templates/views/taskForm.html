@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+
+<script type="text/javascript">
+function mascara(i,t){
+
+	   var v = i.value;
+	   if(isNaN(v[v.length-1])){
+		      i.value = v.substring(0, v.length-1);
+		      return;
+		   }
+	   if(t == "cnpj"){
+		      i.setAttribute("maxlength", "18");
+		      if (v.length == 2 || v.length == 6) i.value += ".";
+		      if (v.length == 10) i.value += "/";
+		      if (v.length == 15) i.value += "-";
+		   }
+	   if(t == "cep"){
+		      i.setAttribute("maxlength", "9");
+		      if (v.length == 5) i.value += "-";
+		   }
+	   if(t == "telefone"){
+		      if(v[0] == 9){
+		         i.setAttribute("maxlength", "10");
+		         if (v.length == 5) i.value += "-";
+		      }else{
+		         i.setAttribute("maxlength", "9");
+		         if (v.length == 4) i.value += "-";
+		      }
+		   }
+		}
+ 
+</script>
+<title>Register Form</title>
+</head>
+<body>
+
+	<div layout:fragment="content" class="container mySpace">
+		<form th:action="@{/addTask}" th:object="${cadastros}" method="post">
+<!--  >form th:action="@{/cadastrarEmpresa}" th:object="${cadastros}" method="post"-->
+			
+                       <fieldset>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">Nome</label>
+                            <!--  >div class="col-md-10 inputGroupContainer"-->
+                               <div class="input-group"><span class="input-group-addon"></span><input
+					type="text" class="form-control" th:field="*{nome_empresa}" id="nome_empresa" placeholder="Nome da Empresa" required /><div class="text text-danger" th:if="${#fields.hasErrors('nome_empresa')}"
+					th:errors="*{nome_empresa}" ></div></div>
+                            </div>
+                       
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Razao Social</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class=" 	glyphicon glyphicon-edit"></i></span><input type="text" class="form-control" th:field="*{razao_empresa}"
+					id="razao_empresa"  placeholder="Razao Social" required/><div class="text text-danger"
+					th:if="${#fields.hasErrors('razao_empresa')}" th:errors="*{razao_empresa}"></div>
+                            </div></div>
+                         
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Email</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input type="email" class="form-control" th:field="*{email_empresa}"
+					id="email_empresa" placeholder="Email" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('email_empresa')}" th:errors="*{email_empresa}"></div>
+
+			</div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Telefone</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input oninput="mascara(this, 'telefone')" type="text" class="form-control" th:field="*{telefone}"
+					id="telefone" placeholder="Telefone" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
+
+			</div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Area Medica</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span><input type="text" class="form-control" th:field="*{area_medica}"
+					id="area_medica" placeholder="Area Medica" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('area_medica')}" th:errors="*{area_medica}"></div></div>
+                         </div>
+                         
+                         
+                         <div class="form-group">
+                            <label class="col-md-6 control-label">CNPJ</label><label class="col-md-1 control-label">CEP</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span><input oninput="mascara(this, 'cnpj')"
+					type="text" class="form-control" th:field="*{cnpj}"
+					id="cnpj" placeholder="CNPJ" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"></div>
+              
+                                                        
+                            <div class="col-md-6 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input oninput="mascara(this, 'cep')" type="text" class="form-control" th:field="*{cep}"
+					id="cep" placeholder="CEP" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}"></div>
+				</div>
+			</div> </div></div>
+                         
+ 
+                         <div class="form-group">
+                                                   
+                            <label class="col-md-9 control-label">Rua</label> <label class="col-md-1 control-label">Numero</label> 
+                          
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+				<input type="text" class="form-control" th:field="*{rua_end}"
+					id="rua_end" placeholder="Rua" required/>
+				<div class="text text-danger" th:if="${#fields.hasErrors('rua_end')}" th:errors="*{rua_end}"></div>
+
+			                <div  class="col-sm-3">   
+                            <div  class="col-md-14 inputGroupContainer">             
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input type="text" class="form-control" th:field="*{numero_end}"
+					id="numero_end" placeholder="N" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('numero_end')}" th:errors="*{numero_end}"></div>
+               </div></div></div>
+               </div>  </div>
+               
+                               
+    
+                         <div class="form-group">
+                            <label class="col-md-6 control-label">Bairro</label><label class="col-md-1 control-label">Cidade</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input type="text" class="form-control" th:field="*{bairro_end}"
+					id="bairro_end" placeholder="Bairro" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('bairro_end')}" th:errors="*{bairro_end}"></div>
+                         
+                       
+                            
+                            <div class="col-md-6 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input type="text" class="form-control" th:field="*{cidade_end}"
+					id="cidade_end" placeholder="Cidade" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('cidade_end')}" th:errors="*{cidade_end}"></div></div>
+                         </div></div></div>
+                        
+                         
+                      </fieldset>
+                     
+				<input type="submit" value="Salvar" class="btn btn-primary" />
+		</form>
+	</div>
+</body>
+</html>

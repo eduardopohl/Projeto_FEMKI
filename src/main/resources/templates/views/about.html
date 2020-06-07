@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <meta charset="UTF-8">
+  <title>About</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Content-Language" content="en_US" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+<link rel='stylesheet' href='https://res.cloudinary.com/ratzydev/raw/upload/v1527318671/webdevchallenge1/reset.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+ <title>Index Page</title>
+</head>
+<body>
+
+ <body>
+   <header>
+    <a href="/" class="logo"><img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/logo.png" alt="Smart SEO" class="full-width-img"/></a>
+    <nav>
+        
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Clientes</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+      <!--  >li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/cadastrarEmpresa">Cadastrar</a>
+      </li-->
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+       <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" href="/logout" >Logout</a>
+      </li>
+    </nav>
+    <div class="hamburger-menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>  
+ <div class="hero-wrapper">
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero.jpg" alt="Hero Image" class="resp-hide" />
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero-resp.jpg" alt="Hero Image" class="resp-show" />
+        <div class="hero-text-wrapper">
+            <h1>Conheça a FEMKHRA </h1>
+            <p>Nossa Empresa sempre Servindo com Excel&#234;ncia em todo o Pa&#237;s.</p>
+        </div>
+    </div>
+        <ul class="services-list">
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+                <h3>NOSSA MISS&#195;O</h3>
+            </div>
+            <p>
+                
+Oferecer serviços de consultoria com qualidade e excelência, desenvolvendo pessoas, otimizando processos e transformando assim as organizações, maximizando seus resultados, a fim de alcançarem seu ápice em produtividade, rentabilidade e satisfação de nossos clientes..
+            </p></li>
+            
+            
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+               <h3>NOSSA VIS&#195;O</h3>
+            </div>
+            <p>
+ Ser uma Empresa de Excel&#234;ncia em assessoria, visando a qualidade e a melhoria dos processos administrativos e gerenciais, por meio de uma equipe preparada, organizada e competente.             
+            </p></li>
+            
+            
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+                <h3>NOSSOS VALORES</h3>
+            </div>
+            <p>              
+    -Ética,Confiabilidade e integridade;  
+     Valorização e Reconhecimento; 
+     Crescimento e inovação contínua; 
+    Respeito e responsabilidade social.</p>
+           </li>
+           </ul>
+
+<div class="bg-light">
+  <div class="container py-5">
+    <div class="row h-100 align-items-center py-5">
+      <div class="col-lg-6">
+        <h1 class="display-4">Sobre n&#243;s!</h1>
+        <p class="lead text-muted mb-0"></p><p>Projeto Elaborado como requisito principal da Disciplina Projeto Interdisciplinar IV .</p>
+           Integrantes:   Eduardo Pohl, Fabio Mizael, Henrique Anitelli, Kaio Vinicius  e Michael Lima . 
+          GTI 4&#186; Semestre FATEC Campinas. </p>
+        
+                   
+      
+      </div>
+      <div class="col-lg-6 d-none d-lg-block"><img src="https://assets-ouch.icons8.com/preview/33/40f15641-70be-41e2-9af2-ad971c5e8e87.png" alt="" class="img-fluid"></div>
+    </div>
+  </div>
+</div>
+
+     
+     
+        
+           
+         
+</body>
+<footer>
+<p class="text text-center">
+     &copy; 2019 Projeto FEMKHRA
+   </p>
+
+</footer>
+
+</html>

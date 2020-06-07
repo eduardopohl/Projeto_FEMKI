@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: NHSystem
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: MichaelLimadeOliveir
+Implementation-Vendor-Id: org.sambasoft
+Build-Jdk: 1.8.0_202
+Implementation-URL: http://projects.spring.io/spring-boot/NHSystem/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

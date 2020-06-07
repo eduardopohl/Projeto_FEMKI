@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <meta charset="UTF-8">
+ 
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Content-Language" content="en_US" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+<link rel='stylesheet' href='https://res.cloudinary.com/ratzydev/raw/upload/v1527318671/webdevchallenge1/reset.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+ <title>Index Page</title>
+</head>
+
+
+ <body>
+   <header>
+    <a href="/" class="logo"><img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/logo.png" alt="Smart SEO" class="full-width-img"/></a>
+    <nav>
+        
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Clientes</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+      <!--  >li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/cadastrarEmpresa">Cadastrar</a>
+      </li-->
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+       <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" href="/logout" >Logout</a>
+      </li>
+    </nav>
+    <div class="hamburger-menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>   
+
+ <div class="alert alert-info" th:if="${exist}">
+	<p class="text text-center">
+	  Usuario com Email j&#225; Existente!
+	</p>
+	</div>
+    
+      <div class="hero-wrapper">
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero.jpg" alt="Hero Image" class="resp-hide" />
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero-resp.jpg" alt="Hero Image" class="resp-show" />
+        <div class="hero-text-wrapper">
+            <h1>Femkhra Consultorias</h1>
+            <p>Especializados em Laudos e Medições Técnicas.</p>
+        </div>
+    </div>
+    <div class="hero-strip-wrapper">
+        <h3>Faça o Cadastro para obter as Informações da sua Empresa.</h3>
+       <a href="/login"><button type="button"  class="btn">Já possui Cadastro?</button></a>
+    </div>
+      
+    <ul class="services-list">
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+                <h3>NOSSA MISS&#195;O</h3>
+            </div>
+            <p>
+                
+Oferecer serviços de consultoria com qualidade e excelência, desenvolvendo pessoas, otimizando processos e transformando assim as organizações, maximizando seus resultados, a fim de alcançarem seu ápice em produtividade, rentabilidade e satisfação de nossos clientes..
+            </p></li>
+            
+            
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+               <h3>NOSSA VIS&#195;O</h3>
+            </div>
+            <p>
+ Ser uma Empresa de Excel&#234;ncia em assessoria, visando a qualidade e a melhoria dos processos administrativos e gerenciais, por meio de uma equipe preparada, organizada e competente.             
+            </p></li>
+            
+            
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/icon_seo.png" alt="SEO" />
+                <h3>NOSSOS VALORES</h3>
+            </div>
+              <p>              
+    -Ética,Confiabilidade e integridade;  
+     Valorização e Reconhecimento; 
+     Crescimento e inovação contínua; 
+    Respeito e responsabilidade social.</p></li>
+           </ul>
+        </body>
+
+  
+   
+    
+    
+    <div class="register-form">
+    <form th:action="@{/register}" th:object="${user}" method="post" class="aument-transicao">
+			<h1>Registrar</h1>
+			<div class="form-group">
+				<label for="email" class="form-control-label">Email</label> <input
+					type="text" class="form-control" th:field="*{email}" id="email" required style="width:300px;"/>
+				<div class="text text-danger" th:if="${#fields.hasErrors('email')}"
+					th:errors="*{email}"></div>
+			</div>
+			
+			<div class="form-group">
+				<label for="name" class="form-control-label">Name</label> <input
+					type="text" class="form-control" th:field="*{name}" id="name" required style="width:300px;"/>
+				<div class="text text-danger" th:if="${#fields.hasErrors('name')}"
+					th:errors="*{name}"></div>
+
+			</div>
+			<div class="form-group">
+				<label for="password" class="form-control-label">Password</label> <input
+					type="password" class="form-control" th:field="*{password}"
+					id="password" required style="width:300px;"/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+			</div>
+			<input type="submit" value="Cadastrar" class="vldform__button" />
+
+		</form>
+						 </div>
+    
+    
+        
+   
+    
+          <!--  >div class="jumbotron">
+          <p>Pagina Inicial de Cadastros de Empresa</p>
+           </div>
+          </div-->
+          
+				
+          
+</body>
+    <script  src="js/index.js"></script>
+    <footer>
+<p class="text text-center">
+     &copy; 2019 Projeto FEMKHRA
+   </p>
+
+</footer>
+</html>
+	

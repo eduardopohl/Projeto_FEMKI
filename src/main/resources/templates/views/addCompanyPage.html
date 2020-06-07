@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <meta charset="UTF-8">
+ 
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Content-Language" content="en_US" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+<link rel='stylesheet' href='https://res.cloudinary.com/ratzydev/raw/upload/v1527318671/webdevchallenge1/reset.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+<script type="text/javascript">
+function mascara(i,t){
+
+	   var v = i.value;
+	   if(isNaN(v[v.length-1])){
+		      i.value = v.substring(0, v.length-1);
+		      return;
+		   }
+	   if(t == "cnpj"){
+		      i.setAttribute("maxlength", "18");
+		      if (v.length == 2 || v.length == 6) i.value += ".";
+		      if (v.length == 10) i.value += "/";
+		      if (v.length == 15) i.value += "-";
+		   }
+	   if(t == "cep"){
+		      i.setAttribute("maxlength", "9");
+		      if (v.length == 5) i.value += "-";
+		   }
+	   
+	   if(t == "telefone"){
+		      if(v[2] == 9){
+		         i.setAttribute("maxlength", "12");
+		         if (v.length == 7) i.value += "-";
+		      }else{
+		         i.setAttribute("maxlength", "11");
+		         if (v.length == 6) i.value += "-";
+		      }
+		   }
+		}
+ 
+</script>
+<title>Cadastro de Empresa</title>
+</head>
+
+
+ <body>
+   <header>
+    <a href="/" class="logo"><img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/logo.png" alt="Smart SEO" class="full-width-img"/></a>
+    <nav>
+        
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Clientes</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+      <!--  >li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/cadastrarEmpresa">Cadastrar</a>
+      </li-->
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+       <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" href="/logout" >Logout</a>
+      </li>
+    </nav>
+    
+   <div class="hamburger-menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>   
+      <div class="hero-wrapper">
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero.jpg" alt="Hero Image" class="resp-hide" />
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero-resp.jpg" alt="Hero Image" class="resp-show" />
+        <div class="hero-text-wrapper">
+            <h1>Cadastro de Empresas</h1>
+            <p>Especializados em Laudos e Medições Técnicas.</p>
+        </div>
+    </div>
+<body>
+
+
+	<div class="container-lista">
+		<form th:action="@{/addCompany}" th:object="${cadastros}" method="post">
+<!--  >form th:action="@{/cadastrarEmpresa}" th:object="${cadastros}" method="post"-->
+			
+                       <fieldset>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">Nome</label>
+                            <!--  >div class="col-md-10 inputGroupContainer"-->
+                               <div class="input-group"><span class="input-group-addon"></span><input
+					type="text" class="form-control" th:field="*{nome_empresa}" id="nome_empresa" placeholder="Nome da Empresa" required /><div class="text text-danger" th:if="${#fields.hasErrors('nome_empresa')}"
+					th:errors="*{nome_empresa}" ></div></div>
+                            </div>
+                       
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Razao Social</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class=" 	glyphicon glyphicon-edit"></i></span><input type="text" class="form-control" th:field="*{razao_empresa}"
+					id="razao_empresa"  placeholder="Razao Social" required/><div class="text text-danger"
+					th:if="${#fields.hasErrors('razao_empresa')}" th:errors="*{razao_empresa}"></div>
+                            </div></div>
+                         
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Email</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input type="email" class="form-control" th:field="*{email_empresa}"
+					id="email_empresa" placeholder="Email" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('email_empresa')}" th:errors="*{email_empresa}"></div>
+
+			</div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Telefone</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input oninput="mascara(this, 'telefone')" type="text" class="form-control" th:field="*{telefone}"
+					id="telefone" placeholder="Telefone" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
+
+			</div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Area Medica</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span><input type="text" class="form-control" th:field="*{area_medica}"
+					id="area_medica" placeholder="Area Medica" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('area_medica')}" th:errors="*{area_medica}"></div></div>
+                         </div>
+                         
+                         
+                         <div class="form-group">
+                            <label class="col-md-6 control-label">CNPJ</label><label class="col-md-1 control-label">CEP</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span><input oninput="mascara(this, 'cnpj')"
+					type="text" class="form-control" th:field="*{cnpj}"
+					id="cnpj" placeholder="CNPJ" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"></div>
+              
+                                                        
+                            <div class="col-md-6 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input oninput="mascara(this, 'cep')" type="text" class="form-control" th:field="*{cep}"
+					id="cep" placeholder="CEP" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}"></div>
+				</div>
+			</div> </div></div>
+                         
+ 
+                         <div class="form-group">
+                                                   
+                            <label class="col-md-9 control-label">Rua</label> <label class="col-md-1 control-label">Numero</label> 
+                          
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+				<input type="text" class="form-control" th:field="*{rua_end}"
+					id="rua_end" placeholder="Rua" required/>
+				<div class="text text-danger" th:if="${#fields.hasErrors('rua_end')}" th:errors="*{rua_end}"></div>
+
+			                <div  class="col-sm-3">   
+                            <div  class="col-md-14 inputGroupContainer">             
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input type="text" class="form-control" th:field="*{numero_end}"
+					id="numero_end" placeholder="N" required />
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('numero_end')}" th:errors="*{numero_end}"></div>
+               </div></div></div>
+               </div>  </div>
+               
+                               
+    
+                         <div class="form-group">
+                            <label class="col-md-6 control-label">Bairro</label><label class="col-md-1 control-label">Cidade</label>
+                            
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input type="text" class="form-control" th:field="*{bairro_end}"
+					id="bairro_end" placeholder="Bairro" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('bairro_end')}" th:errors="*{bairro_end}"></div>
+                         
+                       
+                            
+                            <div class="col-md-6 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input type="text" class="form-control" th:field="*{cidade_end}"
+					id="cidade_end" placeholder="Cidade" required/>
+				<div class="text text-danger"
+					th:if="${#fields.hasErrors('cidade_end')}" th:errors="*{cidade_end}"></div></div>
+                         </div></div></div>
+                        
+                         
+                      </fieldset>
+                     
+				<input type="submit" value="Salvar" class="btn btn-primary" />
+		</form>
+	</div>
+</body>
+<footer>
+<p class="text text-center">
+     &copy; 2019 Projeto FEMKHRA
+   </p>
+
+</footer>
+
+</html>

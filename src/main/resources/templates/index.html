@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <meta charset="UTF-8">
+  <title>Index</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Content-Language" content="en_US" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+<link rel='stylesheet' href='https://res.cloudinary.com/ratzydev/raw/upload/v1527318671/webdevchallenge1/reset.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+		<link rel="stylesheet" href="css/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,400,300,500,600,700" rel="stylesheet">
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="css/linearicons.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/main2.css">
+  
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+ <title>Index Page</title>
+</head>
+<body>
+
+ <body>
+   <header>
+    <a href="/" class="logo"><img src="css/LogoMakr_7FB7LJ.png" alt="Smart SEO" class="full-width-img"/></a>
+    <nav>
+         
+      
+      <li class="nav-item"    sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/register">Cadastro</a>
+      </li>
+      <li class="nav-item"  sec:authorize="!isAuthenticated()">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item"   sec:authorize="isAuthenticated()"  >
+        <a class="nav-link" href="/profile">Perfil</a>
+      </li>
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/users">Clientes</a>
+        </li>  
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a class="nav-link" href="/lista">Empresas</a>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link" href="/about">Sobre</a>
+      </li>
+       <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" href="/logout" >Logout</a>
+      </li>
+      
+
+
+    <div class="hamburger-menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</header>   
+      <div class="hero-wrapper">
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero.jpg" alt="Hero Image" class="resp-hide" />
+        <img src="https://res.cloudinary.com/ratzydev/image/upload/v1528004141/webdevchallenge2/hero-resp.jpg" alt="Hero Image" class="resp-show" />
+        <div class="hero-text-wrapper">
+            <h1>Femki Consultorias</h1>
+            <p>Especializados em Laudos e Medições Técnicas.</p>
+        </div>
+    </div>
+    <div class="hero-strip-wrapper">
+        <h3>Seus Equipamentos em boas mãos.</h3>
+        <a href="/services"><button type="button" class="btn">Nossos Serviços</button></a>
+    </div>
+    <ul class="services-list">
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://img.icons8.com/nolan/64/000000/james-bond.png" alt="SEO" />
+                <h3>NOSSA MISS&#195;O</h3>
+            </div>
+            <p>
+                
+Oferecer serviços de consultoria com qualidade e excelência, desenvolvendo pessoas, otimizando processos e transformando assim as organizações, maximizando seus resultados, a fim de alcançarem seu ápice em produtividade, rentabilidade e satisfação de nossos clientes..
+            </p></li>
+            
+            
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://img.icons8.com/nolan/48/000000/visible.png" alt="PPC" />
+               <h3>NOSSA VIS&#195;O</h3>
+            </div>
+            <p>
+ Ser uma Empresa de Excel&#234;ncia em assessoria, visando a qualidade e a melhoria dos processos administrativos e gerenciais, por meio de uma equipe preparada, organizada e competente.             
+            </p></li>
+            
+            
+        <li class="services-item">
+            <div class="services-item-header">
+                <img src="https://img.icons8.com/nolan/64/000000/bar-chart.png" alt="Web Design"  />
+                <h3>NOSSOS VALORES</h3>
+            </div>
+              <p>              
+    -Ética,Confiabilidade e integridade;  
+     Valorização e Reconhecimento; 
+     Crescimento e inovação contínua; 
+    Respeito e responsabilidade social.</p></li>
+           </ul>
+       
+       
+       
+       <section class="feature-area">
+			<div class="container">
+				<div class="row pt-100">
+					<div class="col-lg-4">
+						<div class="single-feature d-flex justify-content-between align-items-top">
+							<div class="number">
+								<h1>01</h1>
+							</div>
+							<div class="desc">
+								<h2 class="text-uppercase">Responsive View</h2>
+								<p>
+								Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="single-feature d-flex justify-content-between align-items-top">
+							<div class="number">
+								<h1>02</h1>
+							</div>
+							<div class="desc">
+								<h2 class="text-uppercase">
+									Multiple Layouts
+								</h2>
+								<p>
+								Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="single-feature d-flex justify-content-between align-items-top">
+							<div class="number">
+								<h1>03</h1>
+							</div>
+							<div class="desc">
+								<h2 class="text-uppercase">
+									Flexible Design
+								</h2>
+								<p>
+								Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End feature Area -->
+
+		<!-- Start video Area -->
+		
+
+		<!-- Start service Area -->
+		<section class="service-area">
+			<div class="container-fluid">
+				<div class="row justify-content-start align-items-center">
+					<div class="col-lg-6 service-left">
+						<div class="row justify-content-center">
+							<div class="col-lg-8 col-sm-8 service-content ">
+								<h2 class="text-white"><span>Services</span><br>
+								We Offered</h2>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing <br> elit, sed do eiusmod tempor incididunt ut labore <br>
+ 									et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 service-right">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 single-services">
+								<span class="lnr lnr-poop"></span>
+								<h2>Graphics Design</h2>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 single-services">
+								<span class="lnr lnr-poop"></span>
+								<h2>Graphics Design</h2>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 single-services">
+								<span class="lnr lnr-poop"></span>
+								<h2>Graphics Design</h2>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 single-services">
+								<span class="lnr lnr-poop"></span>
+								<h2>Graphics Design</h2>
+								<p>
+									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End service Area -->
+
+		<!-- Start latest-work Area -->
+		<section class="latest-work-area pt-100 pb-100">
+			<div class="container-fluid">
+				
+			<div class="container">
+				<div class="row d-flex justify-content-center video-wrap">
+					<div class="col-lg-8 col-md-12	">
+						<div class="feature-video">
+								<div class="overlay overlay-bg"></div>
+								
+						</div>
+						<div class="content-wrap pt-60 pb-60">
+							<h2>
+								Great <span>Modern Design</span> <br>
+								Build with <span>usability</span> in mind
+							</h2>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+									et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+								officia deserunt mollit anim id est laborum.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			</div>
+		</section>
+		<!-- End latest-work Area -->
+
+		<!-- Start newsletter Area -->
+		<section class="subscription-area pt-100 pb-100">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="section-title text-center">
+							<h3>Subscribe <br>
+							for our <span>Newsletter</span></h3>
+							<p>We won’t send any kind of spam</p>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-6">
+						<div id="mc_embed_signup">
+							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
+								<input name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" type="email">
+								<div style="position: absolute; left: -5000px;">
+									<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+								</div>
+								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Get Started</span></button>
+								<div class="info"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End newsletter Area -->
+		<!-- Start contact Area -->
+		
+	  
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+		<!-- Start newsletter Area -->
+		<section class="subscription-area pt-100 pb-100">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="section-title text-center">
+							<h3>Entre em  <br>
+							Contato <span>Conosco</span></h3>
+							<p>Iremos lhe prestar o melhor serviço da país!</p>
+						</div>
+				
+				</div>
+			</div>
+			</div>
+
+		<!-- Start contact Area -->
+		
+			<div class="container">
+				<div class="row align-items-center white-bg wrap-contact">
+					<div class="col-lg-3 col-md-4 contact-left no-padding">
+						<img class="mx-auto d-flex img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHV5OOmkAKTNRuQlV_3dnwROLhfDGwRx7NdvKL2ttEqIfeGULE" alt="">
+					</div>
+					<div class="col-lg-9 col-md-8 no-padding contact-right">
+						<form   class="contact-form text-right" action="https://formspree.io/michael.limof@gmail.com" method="POST">
+							
+							<input name="name" placeholder="Digite seu Nome ou da sua Empresa" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite seu Nome ou da sua Empresa'" class="common-input mt-10" required type="text">
+							<input name="telefone" placeholder="Digite um numero de Contato" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite um numero de Contato'" class="common-input mt-10" required type="tel">
+							<input name="_replyto" placeholder="Digite seu Email" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite seu Email'" class="common-input mt-10"  >
+							<textarea class="common-textarea mt-10" name="message" placeholder="Digite a Mensagem" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite a Mensagem'" required></textarea>
+							<button  type="submit" value="Send" class="btn">Enviar</button>
+							<div class="alert-msg"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+				
+		</section>
+     
+           
+           
+           
+           
+           
+        </body>
+
+ 
+          
+</body>
+    <script  src="js/index.js"></script>
+    <footer>
+<p class="text text-center">
+     &copy; 2019 Projeto FEMKI
+   </p>
+
+</footer>
+    
+</html>
